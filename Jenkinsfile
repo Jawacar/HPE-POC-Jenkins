@@ -1,14 +1,10 @@
 pipeline {
-    agent {
-        docker {
-            image 'docker'
-        }
-    }
-
-    stages {
-        stage('Build') {
+  agent {
+    docker { image 'docker' }
+  }
+  stages {
+    stage('Build') {
             steps {
-                // Get some code from a GitHub repository
                 git 'https://github.com/Jawacar/HPE-POC-Jenkins.git'
 
             }
@@ -23,6 +19,5 @@ pipeline {
             steps {
                 sh 'docker push jawacarv/jawa-poc:poc-jenkins-nginx'
             }
-        }
-    }
+  }
 }
